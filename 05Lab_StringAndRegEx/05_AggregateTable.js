@@ -1,24 +1,14 @@
-function aggregateTable(input) {
-    let towns = [];
-    let sum = 0;
+function aggregateTable(lines) {
+    let sum = 0, list = [];
 
-    for (let word of input) {
-
+    for (let line of lines) {
+        let townData = line.split('|'),
+            townName = townData[1].trim(),
+            income = Number(townData[2].trim());
+        list.push(townName);
+        sum += income;
     }
-    // for (let i = 0; i < input.length; i++) {
-    //     if(i % 2 === 0) {
-    //         towns.push(input[i]);
-    //     }
-    //     else {
-    //         sum.push(Number(input[i]));
-    //     }
-    // }
-
-    towns.join(', ');
-    sum.reduce((a, b) => a + b);
-
-    console.log(towns);
-    console.log(sum);
+    console.log(list.join(', ') + '\n' + sum);
 }
 
 aggregateTable(['| Sofia           | 300',
